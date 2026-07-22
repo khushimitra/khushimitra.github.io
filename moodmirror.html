@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Mirror App ✨</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 1s ease;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientFlow 10s ease infinite;
+      color: white;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+      animation: fadeIn 2s ease;
+    }
+
+    .mood-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.15);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+
+    .emoji {
+      font-size: 6rem;
+      margin-top: 40px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+      transition: transform 0.5s ease, text-shadow 0.5s ease;
+    }
+
+    /* Floating bubble animation */
+    .bubble {
+      position: absolute;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.1));
+      border-radius: 50%;
+      animation: rise 7s infinite ease-in;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌈 Mood Mirror App ✨</h1>
+
+  <div class="mood-buttons">
+    <button onclick="setMood('happy')">😊 Happy</button>
+    <button onclick="setMood('sad')">😢 Sad</button>
+    <button onclick="setMood('angry')">😡 Angry</button>
+    <button onclick="setMood('romantic')">💖 Romantic</button>
+    <button onclick="setMood('calm')">😌 Calm</button>
+  </div>
+
+  <div class="emoji" id="emoji">🙂</div>
+  <audio id="music" autoplay loop></audio>
+
+  <script>
+    const body = document.body;
+    const emoji = document.getElementById("emoji");
+    const music = document.getElementById("music");
+
+    const moods = {
+      happy: {
+        color: "linear-gradient(-45deg, #f9d423, #ff4e50, #f9d423, #ff4e50)",
+        emoji: "😄",
+        song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      sad: {
+        color: "linear-gradient(-45deg, #2c3e50, #4 ca1af, #2c3e50, #4ca1af)",
+        emoji: "😢",
+        song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      angry: {
+        color: "linear-gradient(-45deg, #ff512f, #dd2476, #ff512f, #dd2476)",
+        emoji: "😡",
+        song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      },
+      romantic: {
+        color: "linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4, #fcb045)",
+        emoji: "😍",
+        song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      },
+      calm: {
+        color: "linear-gradient(-45deg, #56ccf2, #2f80ed, #56ccf2, #2f80ed)",
+        emoji: "😌",
+        song: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+      }
+    };
+
+    function setMood(mood) {
+      const m = moods[mood];
+      body.style.background = m.color;
+      body.style.backgroundSize = "400% 400%";
+      emoji.textContent = m.emoji;
+      emoji.style.transform = "scale(1.3)";
+      emoji.style.textShadow = "0 0 30px white";
+      setTimeout(() => {
+        emoji.style.transform = "scale(1)";
+        emoji.style.textShadow = "0 0 20px rgba(255,255,255,0.7)";
+      }, 600);
+
+      music.src = m.song;
+      music.play();
+
+      createBubbles();
+    }
+
+    // Floating bubble creator
+    function createBubbles() {
+      for (let i = 0; i < 12; i++) {
+        const bubble = document.createElement("div");
+        bubble.classList.add("bubble");
+        const size = Math.random() * 25 + 10;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}vw`;
+        bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
+        body.appendChild(bubble);
+        setTimeout(() => bubble.remove(), 7000);
+      }
+    }
+  </script>
+</body>
+</html> 
+
+ 
