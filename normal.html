@@ -1,0 +1,405 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylsheet" href="styl.css">
+  <link rel="JVSfile" href="JVS.js">
+  <title>K-Sonic Mood Player</title>
+<style>
+html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 60px;
+      font-family: 'Brush Script MT', cursive;
+      text-shadow: 0 0 20px rgba(10, 10, 10, 0.8);
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: -10px;
+      color: #f0f0f0;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      margin: 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.4);
+    }
+
+    iframe {
+      margin-top: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="background"></canvas>
+
+  <h1>🎧 K-Sonic Mood Player</h1>
+  <p>Select your mood and let the music match your vibe!</p>
+
+  <div class="buttons">
+    <button onclick="setMood('happy')">😊 Happy</button>
+    <button onclick="setMood('sad')">😢 Sad</button>
+    <button onclick="setMood('chill')">😎 Chill</button>
+    <button onclick="setMood('romantic')">💖 Romantic</button>
+    <button onclick="setMood('energetic')">🔥 Energetic</button>
+    <button onclick="setMood('motivation')">✨ Motivation</button>
+  </div>
+
+  <iframe
+   
+  id="player"
+  style="border-radius:12px"
+  width="50%"
+  height="200"
+  frameBorder="0"
+  allowfullscreen
+  src=""
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen">
+
+  </iframe>
+  <script>
+    // 🌈 Background Bubble Animation
+    const canvas = document.getElementById('background');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    class Bubble {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 8 + 3;
+        this.speed = Math.random() * 2 + 0.5;
+        this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      }
+      update() {
+        this.y -= this.speed;
+        if (this.y < -10) {
+          this.y = height + 10;
+          this.x = Math.random() * width;
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    const bubbles = [];
+    for (let i = 0; i < 80; i++) {
+      bubbles.push(new Bubble());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      bubbles.forEach(b => {
+        b.update();
+        b.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+  
+    // 🎵 Mood-based Spotify Playlists
+const moods = {
+  happy: "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",
+  sad: "https://open.spotify.com/embed/playlist/37i9dQZF1DX7qK8ma5wgG1",
+  chill: "https://open.spotify.com/embed/playlist/37i9dQZF1DX889U0CL85jj",
+  romantic: "https://open.spotify.com/embed/playlist/37i9dQZF1DWXbttAJcbphz",
+  energetic: "https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7AP",
+  motivation: "https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0"
+};
+
+const gradients = {
+  happy: "linear-gradient(135deg,#ff9a9e,#fad0c4)",
+  sad: "linear-gradient(135deg,#283048,#859398)",
+  chill: "linear-gradient(135deg,#355c7d,#6c5b7b,#c06c84)",
+  romantic: "linear-gradient(135deg,#ff758c,#ff7eb3)",
+  energetic: "linear-gradient(135deg,#00c9ff,#92fe9d)",
+  motivation: "linear-gradient(135deg,#f7971e,#ffd200)"
+};
+
+function setMood(mood) {
+  document.body.style.background = gradients[mood];
+
+  const player = document.getElementById('player');
+  const playlistLink = moods[mood];
+
+  player.src = `${playlistLink}?utm_source=generator`;
+}
+    // Default mood
+    setMood('happy');
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-SONIC Mood Music</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Monoton', cursive;
+  color: white;
+  text-align: center;
+  background: radial-gradient(circle, #ff758c, #ff7eb3);
+}
+
+/* 🎨 Bubble Canvas */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h1 {
+  margin-top: 30px;
+  font-size: 55px;
+  text-shadow: 0 0 25px rgba(255,255,255,0.9);
+}
+
+p {
+  font-family: sans-serif;
+  margin-top: -10px;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+button {
+  margin: 8px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.25);
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.45);
+}
+
+iframe {
+  margin-top: 35px;
+  width: 360px;
+  height: 380px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bubbleCanvas"></canvas>
+
+<h1>🎧 K-SONIC Mood Music</h1>
+<p>Select your mood & enjoy old songs 🎶</p>
+
+<div class="buttons">
+  <button onclick="setMood('happy')">😊 Happy</button>
+  <button onclick="setMood('sad')">😢 Sad</button>
+  <button onclick="setMood('romantic')">💖 Romantic</button>
+  <button onclick="setMood('chill')">😎 Chill</button>
+  <button onclick="setMood('old')">📻 Old Gold</button>
+</div>
+
+<iframe id="player"
+  src=""
+  frameborder="0"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen">
+</iframe>
+
+<script>
+/* 🎵 Spotify Old Songs Playlists */
+const playlists = {
+  happy: "37i9dQZF1DXdPec7aLTmlC",
+  sad: "37i9dQZF1DX7qK8ma5wgG1",
+  romantic: "37i9dQZF1DWVqfgj8NZEp1",
+  chill: "37i9dQZF1DX4WYpdgoIcn6",
+  old: "37i9dQZF1DXbTxeAdrVG2l" // Old Bollywood / Retro
+};
+
+/* 🎨 Background Gradients */
+const gradients = {
+  happy: "radial-gradient(circle,#ff9a9e,#fad0c4)",
+  sad: "radial-gradient(circle,#2c3e50,#4ca1af)",
+  romantic: "radial-gradient(circle,#ff758c,#ff7eb3)",
+  chill: "radial-gradient(circle,#355c7d,#6c5b7b)",
+  old: "radial-gradient(circle,#f7971e,#ffd200)"
+};
+
+function setMood(mood) {
+  document.body.style.background = gradients[mood];
+  document.getElementById("player").src =
+    `https://open.spotify.com/embed/playlist/${playlists[mood]}`;
+}
+
+/* Default mood */
+setMood("old");
+
+/* 🫧 Colorful Bubble Live Wallpaper */
+const canvas = document.getElementById("bubbleCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Bubble {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + Math.random() * 200;
+    this.radius = Math.random() * 8 + 4;
+    this.speed = Math.random() * 1.5 + 0.5;
+    this.color = `hsla(${Math.random()*360},100%,70%,0.7)`;
+  }
+  update() {
+    this.y -= this.speed;
+    if (this.y < -20) {
+      this.y = canvas.height + 20;
+      this.x = Math.random() * canvas.width;
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
+
+const bubbles = [];
+for (let i = 0; i < 90; i++) bubbles.push(new Bubble());
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  bubbles.forEach(b => { b.update(); b.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.onresize = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+};
+</script>
+
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
