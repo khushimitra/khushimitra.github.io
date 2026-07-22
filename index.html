@@ -1,163 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khushi Mitra | Portfolio</title>
-    <link rel="stylesheet" href="port.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-    
-    <nav id="navbar">
-        <div class="nav-content">
-            <h1 class="logo">Khushi<span>.</span></h1>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content hidden">
-            <h3>Hello, I'm</h3>
-            <h1>Khushi Mitra</h1>
-            <h2 class="typing-text">I am a <span id="typewriter"></span><span class="cursor">|</span></h2>
-            <p>A passionate web technology enthusiast dedicated to building functional, attractive digital experiences.</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn primary-btn">View My Work</a>
-                <a href="#contact" class="btn secondary-btn">Contact Me</a>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="about" class="about">
-        <div class="section-title hidden">
-            <h2>About <span>Me</span></h2>
-        </div>
-        <div class="about-content hidden">
-            <div class="about-text">
-                <p>I am currently in my 4th semester pursuing a Bachelor of Computer Applications (BCA) at the <strong>Six Sigma Institute of Technology and Science</strong>. My primary focus is on mastering web technologies and database management systems.</p>
-                <p>While I am currently building my foundational knowledge and focusing on practical learning over formal work experience, I am deeply interested in both front-end aesthetics and back-end logic. My ultimate goal is to become a Full Stack Web Developer and Cloud Architect, aiming to build a career at top tech organizations like TCS.</p>
-                
-                <div class="achievements">
-                    <div class="achievement-card">
-                        <i class="fas fa-laptop-code"></i>
-                       
-                    </div>
-                    <div class="achievement-card">
-                        <i class="fas fa-network-wired"></i>
-                        <h4>Aarvion Technologies</h4>
-                        <p>Remote Intern</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills-section">
-        <div class="section-title hidden">
-            <h2>My <span>Tech Skills</span></h2>
-        </div>
-        <div class="skills-container hidden">
-            <div class="skill-box"><i class="fab fa-html5"></i> <span>HTML5</span></div>
-            <div class="skill-box"><i class="fab fa-css3-alt"></i> <span>CSS3</span></div>
-            <div class="skill-box"><i class="fab fa-js"></i> <span>JavaScript</span></div>
-            <div class="skill-box"><i class="fas fa-database"></i> <span>SQL (Basic)</span></div>
-            <div class="skill-box"><i class="fab fa-python"></i> <span>Python (Basic)</span></div>
-            <div class="skill-box"><i class="fab fa-node"></i> <span>Node.js(Currently Learning)</span></div>
-            <div class="skill-box"><i class="fas fa-cloud"></i> <span>Cloud (basic)</span></div>
-        </div>
-    </section>
-
-
-    <section id="projects" class="projects-section">
-        <div class="section-title hidden">
-            <h2>My <span>Projects</span></h2>
-        </div>
-        <div class="project-grid hidden">
-            
-        
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="image-placeholder"><i class="fas fa-sign-in-alt"></i></div>
-                </div>
-                <div class="project-info">
-                    <h3> Login Web Page</h3>
-                    <p>A responsive and secure authentication interface focusing on clean UI/UX and form validation fundamentals.</p>
-                    <div class="project-tags">
-                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="image-placeholder"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="project-info">
-                    <h3>Musical Web Page</h3>
-                    <p>An interactive web application dealing with DOM manipulation and audio elements for a seamless user experience.</p>
-                    <div class="project-tags">
-                        <span>JavaScript</span><span>CSS</span>
-                    </div>
-                </div>
-            </div>
-
-        
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="image-placeholder"><i class="fas fa-robot"></i></div>
-                </div>
-                <div class="project-info">
-                    <h3>Cute Chatbot</h3>
-                    <p>A conversational interface applying basic logical flows to simulate a friendly chat experience.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>JS</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    
-    <section id="contact" class="contact-section">
-        <div class="section-title hidden">
-            <h2>Get In <span>Touch</span></h2>
-        </div>
-        <div class="contact-container hidden">
-            <form class="contact-form" id="contactForm">
-                <div class="input-group">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                </div>
-                <input type="text" placeholder="Subject" required>
-                <textarea rows="6" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn primary-btn">Send Message <i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Khushi Mitra. Crafted with passion.</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </footer>
-
-    <script src="port.js"></script>
-</body>
-</html>
+<!DOCTYPE html> <html lang="en"> 
+    <head> <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+         <title>Feedback Collection System</title> 
+         <link rel="stylesheet" href="style.css">
+         </head> 
+         <body>
+             <div class="container">
+                 <h1>College Feedback System</h1>
+                  <div class="card"> <input type="text" placeholder="Enter Name">
+                     <input type="email" placeholder="Enter Email">
+                      <select> 
+                        <option>Select Course</option>
+                         <option>BCA</option> 
+                         <option>BBA</option>
+                          <option>BTech</option>
+                         </select>
+                          <label>Rate Experience</label>
+                           <div class="rating">
+                             <button>1⭐</button>
+                              <button>2⭐</button>
+                               <button>3⭐</button>
+                                <button>4⭐</button> 
+                                <button>5⭐</button>
+                             </div> 
+                             <textarea placeholder="Write your feedback..." rows="5"> </textarea>
+                              <button class="submit-btn"> Submit Feedback </button>
+                             </div> </div> 
+                             <script src="script.js"></script>
+                             
+                             </body> </html>
