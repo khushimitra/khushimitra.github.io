@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="STYLAPP.css">
+  <link rel="javascript" href="APP.js">
+  <title>K-sonic MOOD MUSIC</title>
+</head>
+<body>
+  </div>
+                     <div class="menu">
+                                 <ul>
+                                     <li><a href="#">Home</a></li>
+                                     <li><a href="#">About</a></li>
+                                     <li><a href="#">Services</a></li>
+                                     <li><a href="#">Gallery</a></li>
+                                     <li><a href="#">Contact</a></li>
+                                   </ul>
+                     </div>
+
+  <div class="search">
+                                   <input class="srch" type="search" name="" placeholder="Time to search music🎵...">
+                                   <a href="#"> <button class="btn">Search</button></a>
+                           </div>
+
+  <h1>K-sonic mood music🎵</h1>
+  <p>Welcome to 🎧K-Sonic is a smart 🤓and user-friendly music application designed especially for music lovers 🎶.
+    The app allows users to listen to songs based on their mood🙃, making the music experience more enjoyable 🥳and personalized 😊.
+     K-Sonic focuses on simplicity, speed, and user comfort 😇.</p>  
+  
+  <button style="font-family: 'Bookman Old Style';">😊 Happy</button>
+  <button style="font-family: 'Bookman Old Style';">😢 Sad</button>
+  <button style="font-family: 'Bookman Old Style';">⚡ Energetic</button>
+  <button style="font-family: 'Bookman Old Style';">😌 Relaxed</button>
+  <button style="font-family: 'Bookman Old Style';">💖 Romantic</button>
+  <button style="font-family: 'Bookman Old Style';">🎉 Party vibes</button>
+ 
+ 
+  <!-- MULTIY COLOURFULL BUBBLE EFFECT -->
+
+  <script> 
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#ff9ff3','white'];
+    const body = document.body;
+
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      bubble.style.left = Math.random() * 100 + 'vw';
+      bubble.style.animationDuration = (Math.random() * 1 + 2) + 's';
+      body.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 5000);
+    }
+
+    setInterval(createBubble, 110);
+    
+  </script>
+ 
+   </div>
+<footer>© 2025 K-Sonic | Live Mood Music Experience</footer>
+  </div>
+</body>
+</html>
